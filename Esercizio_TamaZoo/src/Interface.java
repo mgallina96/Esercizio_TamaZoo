@@ -1,5 +1,3 @@
-package tamaZoo;
-
 /**
  * @author Manuel Gallina
  *

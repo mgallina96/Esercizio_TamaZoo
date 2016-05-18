@@ -1,8 +1,5 @@
-package tamaZoo;
-
+import myLib.*;
 import java.util.Scanner;
-
-import my_library.Menu;
 
 /**
  * @author Manuel Gallina

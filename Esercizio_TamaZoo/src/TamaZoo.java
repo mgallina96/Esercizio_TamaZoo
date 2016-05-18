@@ -1,5 +1,3 @@
-package tamaZoo;
-
 import java.util.ArrayList;
 
 /**
