@@ -61,4 +61,25 @@ public class Utility
 		
 		return tmp;
 	}
+	
+	/**
+	 * @author Michele Franceschetti
+	 * 
+	 * Clamps the value.
+	 * If the value is greater than the max, the said value becomes the max; otherwise if the value is smaller than the min, the value becomes the min.
+	 * 
+	 * @param value The value to clamp.
+	 * @param min The min level.
+	 * @param max The max level.
+	 * @return The value clamped.
+	 */
+	static public float clamp(float value, float min, float max)
+	{
+		if(value > max)
+			value = max;
+		if(value < min)
+			value = min;
+		
+		return value;
+	}
 }
