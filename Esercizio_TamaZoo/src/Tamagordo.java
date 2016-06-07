@@ -11,30 +11,24 @@ import myLib.Utility;
 
 public class Tamagordo extends Tamagotchi
 {
-	private static final float DEFAULT_SATISFACTION = 0;
 	private static final float DEFAULT_SATIETY = 0;
 	
-	private static final float MIN_UNSATISFIED_ATTRIBUTE_VALUE = 10;
-	private static final float MAX_UNSATISFIED_ATTRIBUTE_VALUE = 30;
+	private static final float MIN_UNSATIETY_ATTRIBUTE_VALUE = 10;
+	private static final float MAX_UNSATIETY_ATTRIBUTE_VALUE = 30;
 	
-	private static final float MAX_START_SATISFACTION = 90;
-	private static final float MIN_START_SATISFACTION = 10;
-    private static final float MAX_START_SATIETY = 90;
+	private static final float MAX_START_SATIETY = 90;
 	private static final float MIN_START_SATIETY = 10; 
 	
 	private static final float MIN_PERCENTAGE = 0.05f;
 	private static final float MAX_PERCENTAGE = 10f;
 	
-	private float minValueOfSatisfaction;
 	private float minValueOfSatiety;
 	private float maxValueOfSatiety;
 	
 	private float percentSatietyIncrement;
-	private float percentSatisfactionIncrement;
 	private float percentSatietyDecrement;
-	private float percentSatisfactionDecrement;
 	
-	private float satisfaction;
+	private static final float SATISFACTION = MAX_VALUE;
 	private float satiety;
 	
 	//private String name;
@@ -47,7 +41,6 @@ public class Tamagordo extends Tamagotchi
 	public Tamagordo()
 	{
 		super();
-		this.satisfaction = DEFAULT_SATISFACTION;
 		this.satiety = DEFAULT_SATIETY;
 	}
 	
@@ -61,7 +54,6 @@ public class Tamagordo extends Tamagotchi
 	{
 		super(name);
 		
-		this.satisfaction = getRandomFloat(MIN_START_SATISFACTION, MAX_START_SATISFACTION);
 		this.satiety = getRandomFloat(MIN_START_SATIETY, MAX_START_SATIETY);;
 		
 		updateState();
@@ -70,11 +62,9 @@ public class Tamagordo extends Tamagotchi
 	public void inizializeValues()
 	{
 		percentSatietyIncrement = getRandomFloat(MIN_PERCENTAGE, MAX_PERCENTAGE);
-		percentSatisfactionIncrement = getRandomFloat(MIN_PERCENTAGE, MAX_PERCENTAGE);
 		percentSatietyDecrement = getRandomFloat(MIN_PERCENTAGE, MAX_PERCENTAGE);
-		percentSatisfactionDecrement = getRandomFloat(MIN_PERCENTAGE, MAX_PERCENTAGE);
 		
-		
+		minValueOfSatiety = getRandomFloat(MIN_UNSATIETY_ATTRIBUTE_VALUE, MAX_UNSATIETY_ATTRIBUTE_VALUE);
 	}
 	
 	/**
@@ -82,11 +72,11 @@ public class Tamagordo extends Tamagotchi
 	 */
 	public void updateState()
 	{
-		if((satiety * satisfaction <= Tamagotchi.MIN_VALUE) || satiety >= Tamagotchi.MAX_VALUE)
+		if(satiety <= Tamagotchi.MIN_VALUE)
 		{
 			this.state = State.Death;
 		}
-		else if(satisfaction < minValueOfSatisfaction || satiety < minValueOfSatiety || satiety > maxValueOfSatiety)
+		else if(satiety <= minValueOfSatiety)
 		{
 			this.state = State.Unsatisfied;
 		}
@@ -96,7 +86,6 @@ public class Tamagordo extends Tamagotchi
 		}
 		
 		satiety = Utility.clamp(satiety, MIN_VALUE, MAX_VALUE);
-		satisfaction = Utility.clamp(satisfaction, MIN_VALUE, MAX_VALUE);
 	}
 	
 	/**
@@ -109,8 +98,6 @@ public class Tamagordo extends Tamagotchi
 		{
 			satiety =  satiety * (1 + percentSatietyIncrement);
 		}
-		
-		satisfaction = satisfaction * (1 - percentSatisfactionDecrement);
 	}
 
 	/**
@@ -119,11 +106,6 @@ public class Tamagordo extends Tamagotchi
 	 */
 	public void giveCares(int num)
 	{
-		for(int i = 0; i < num; i++)
-		{
-			satisfaction =  satisfaction * (1 + percentSatisfactionIncrement);
-		}
-		
 		satiety = satiety * (1 - percentSatietyDecrement);
 	}
 	
@@ -147,7 +129,7 @@ public class Tamagordo extends Tamagotchi
 	{
 		StringBuffer description = new StringBuffer(this.name);
 		description.append(" Sazietà: " + Float.toString(this.satiety));
-		description.append(" Soddisfazione: " + Float.toString(this.satisfaction));
+		description.append(" Soddisfazione: " + Float.toString(SATISFACTION));
 		
 		return description.toString(); 
 	}

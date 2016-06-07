@@ -2,17 +2,11 @@ import java.util.ArrayList;
 
 /**
  * @author Manuel Gallina
- *
  */
 public class TamaZoo
 {
-	//Constants.
-
-	//Attributes.
 	private ArrayList <Tamagotchi> tamagotchiList; 
 	
-	//Getters and setters.
-
 	/**
 	 * @return The tamagotchiList.
 	 */
@@ -29,7 +23,6 @@ public class TamaZoo
 		this.tamagotchiList = tamagotchiList;
 	}
 
-	//Constructors.
 	/**
 	 * Default constructor.
 	 */
@@ -38,7 +31,6 @@ public class TamaZoo
 		this.setTamagotchiList(new ArrayList <Tamagotchi>()); 
 	}
 	
-	//Methods.
 	/**
 	 * Udates the states of all the tamagotchis in this tamazoo.
 	 */
