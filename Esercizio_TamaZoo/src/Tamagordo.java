@@ -4,37 +4,37 @@ import java.util.Random;
 
 import myLib.Utility;
 
-/** 
+/**
  * @author Michele Franceschetti
- * 
+ *
  */
 
 public class Tamagordo extends Tamagotchi
 {
 	private static final float DEFAULT_SATIETY = 0;
-	
+
 	private static final float MIN_UNSATIETY_ATTRIBUTE_VALUE = 10;
 	private static final float MAX_UNSATIETY_ATTRIBUTE_VALUE = 30;
-	
+
 	private static final float MAX_START_SATIETY = 90;
-	private static final float MIN_START_SATIETY = 10; 
-	
+	private static final float MIN_START_SATIETY = 10;
+
 	private static final float MIN_PERCENTAGE = 0.05f;
 	private static final float MAX_PERCENTAGE = 10f;
-	
+
 	private float minValueOfSatiety;
 	private float maxValueOfSatiety;
-	
+
 	private float percentSatietyIncrement;
 	private float percentSatietyDecrement;
-	
+
 	private static final float SATISFACTION = MAX_VALUE;
 	private float satiety;
-	
+
 	//private String name;
 	//protected float satisfaction;
 	//protected float satiety;
-	
+
 	/**
 	 * Default constructor.
 	 */
@@ -43,7 +43,7 @@ public class Tamagordo extends Tamagotchi
 		super();
 		this.satiety = DEFAULT_SATIETY;
 	}
-	
+
 	/**
 	 * Constructor.
 	 * @param name The name of the Tamatriste.
@@ -53,20 +53,20 @@ public class Tamagordo extends Tamagotchi
 	public Tamagordo(String name)
 	{
 		super(name);
-		
+
 		this.satiety = getRandomFloat(MIN_START_SATIETY, MAX_START_SATIETY);;
-		
+
 		updateState();
 	}
-	
+
 	public void inizializeValues()
 	{
 		percentSatietyIncrement = getRandomFloat(MIN_PERCENTAGE, MAX_PERCENTAGE);
 		percentSatietyDecrement = getRandomFloat(MIN_PERCENTAGE, MAX_PERCENTAGE);
-		
+
 		minValueOfSatiety = getRandomFloat(MIN_UNSATIETY_ATTRIBUTE_VALUE, MAX_UNSATIETY_ATTRIBUTE_VALUE);
 	}
-	
+
 	/**
 	 * Update the state of the Tamatriste.
 	 */
@@ -84,10 +84,10 @@ public class Tamagordo extends Tamagotchi
 		{
 			this.state = State.Satisfied;
 		}
-		
+
 		satiety = Utility.clamp(satiety, MIN_VALUE, MAX_VALUE);
 	}
-	
+
 	/**
 	 * Gives a few biscuits to the Tamatriste.
 	 * @param num The number of biscuits.
@@ -108,7 +108,7 @@ public class Tamagordo extends Tamagotchi
 	{
 		satiety = satiety * (1 - percentSatietyDecrement);
 	}
-	
+
 	/**
 	 * Returns a random value betweens min and max.
 	 * @param min The min value.
@@ -118,10 +118,10 @@ public class Tamagordo extends Tamagotchi
 	public float getRandomFloat(float min, float max)
 	{
 		Random rand = new Random();
-		
+
 		return rand.nextFloat() * (max - min) + min;
 	}
-	
+
 	/**
 	 * @return The description of the Tamatriste.
 	 */
@@ -130,7 +130,7 @@ public class Tamagordo extends Tamagotchi
 		StringBuffer description = new StringBuffer(this.name);
 		description.append(" Sazietà: " + Float.toString(this.satiety));
 		description.append(" Soddisfazione: " + Float.toString(SATISFACTION));
-		
-		return description.toString(); 
+
+		return description.toString();
 	}
 }
