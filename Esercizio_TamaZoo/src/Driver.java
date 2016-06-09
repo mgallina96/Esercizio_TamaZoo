@@ -33,10 +33,9 @@ public class Driver
 
 		while(!done)
 		{
-			System.out.print(String.format(zoo.toString()));
-			
-			System.out.print(menu.toString());
 			zoo.updateState();
+			System.out.print(String.format(zoo.toString()));
+			System.out.print(menu.toString());
 
 			switch(menu.inputCommand(sc))
 			{

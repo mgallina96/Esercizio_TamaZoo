@@ -38,7 +38,7 @@ public abstract class Tamagotchi {
 		Death
 	}
 
-	public String name;
+	protected String name;
 	public State state;
 
 	public String getName()

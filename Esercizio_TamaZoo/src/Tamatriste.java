@@ -27,8 +27,8 @@ public class Tamatriste extends Tamagotchi
 	private float minValueOfSatiety;
 	private float maxValueOfSatiety;
 
-	private float percentSatietyIncrement;
-	private float percentSatietyDecrement;
+	private static double percentSatietyIncrement = 0.1;
+	private static double percentSatietyDecrement = 0.1;
 
 	private static final float SATISFACTION = MIN_VALUE;
 	private float satiety;
@@ -95,7 +95,7 @@ public class Tamatriste extends Tamagotchi
 	{
 		for(int i = 0; i < num; i++)
 		{
-			this.satiety *= (1 + this.percentSatietyIncrement);
+			satiety = satiety * (1 + (float)percentSatietyIncrement);
 		}
 	}
 
@@ -105,7 +105,7 @@ public class Tamatriste extends Tamagotchi
 	 */
 	public void giveCares(int num)
 	{
-		satiety = satiety * (1 - percentSatietyDecrement);
+		satiety = satiety * (1 - (float)percentSatietyDecrement);
 	}
 
 	/**

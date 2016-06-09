@@ -25,15 +25,11 @@ public class Tamagordo extends Tamagotchi
 	private float minValueOfSatiety;
 	private float maxValueOfSatiety;
 
-	private float percentSatietyIncrement;
-	private float percentSatietyDecrement;
+	private static double percentSatietyIncrement = 0.1;
+	private static double percentSatietyDecrement = 0.1;
 
 	private static final float SATISFACTION = MAX_VALUE;
 	private float satiety;
-
-	//private String name;
-	//protected float satisfaction;
-	//protected float satiety;
 
 	/**
 	 * Default constructor.
@@ -96,7 +92,7 @@ public class Tamagordo extends Tamagotchi
 	{
 		for(int i = 0; i < num; i++)
 		{
-			satiety =  satiety * (1 + percentSatietyIncrement);
+			satiety = satiety * (1 + (float)percentSatietyIncrement);
 		}
 	}
 
@@ -106,7 +102,7 @@ public class Tamagordo extends Tamagotchi
 	 */
 	public void giveCares(int num)
 	{
-		satiety = satiety * (1 - percentSatietyDecrement);
+		satiety = satiety * (1 - (float)percentSatietyDecrement);
 	}
 
 	/**

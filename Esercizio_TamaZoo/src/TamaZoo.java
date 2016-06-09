@@ -72,7 +72,7 @@ public class TamaZoo
 	{
 		for(int i = 0; i < tamagotchiList.size(); i++)
 		{
-			tamagotchiList.get(i).giveBiscuits(Utility.rand(MIN_RANDOM_CARES, MAX_RANDOM_CARES));
+			tamagotchiList.get(i).giveCares(Utility.rand(MIN_RANDOM_CARES, MAX_RANDOM_CARES));
 		}
 	}
 
